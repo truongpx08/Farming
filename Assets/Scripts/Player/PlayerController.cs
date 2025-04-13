@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : TruongSingleton<PlayerController>
 {
     [SerializeField] private PlayerMovementController movementController;
     [SerializeField] private PlayerRotationController rotationController;

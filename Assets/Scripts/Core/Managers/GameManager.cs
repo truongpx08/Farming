@@ -1,57 +1,28 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : TruongSingleton<GameManager>
 {
-    private static GameManager instance;
-
-    public static GameManager Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindFirstObjectByType<GameManager>();
-
-                if (instance == null)
-                {
-                    GameObject gameManagerObject = new GameObject("GameManager");
-                    instance = gameManagerObject.AddComponent<GameManager>();
-                }
-            }
-
-            return instance;
-        }
-    }
-
-    [SerializeField] private PlayerController player;
-
-    private void Awake()
-    {
-        // Đảm bảo chỉ có một instance của GameManager
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
+    protected override void Start()
     {
         // Khởi tạo game
-        InitializeGame();
+        DataManager.Instance.TryLoadLocalData((gameData) =>
+        {
+            InitializeEnvironment(gameData);
+            InitializePlayer();
+        });
     }
 
-    private void InitializeGame()
+    private void InitializeEnvironment(TruongGameData gameData)
     {
-        InitializePlayer();
+        gameData.tilemap1.ForEach(tile1Data => { Environment.Instance.Tile1Factory.SpawnTile(tile1Data); });
+        gameData.tilemap2.ForEach(tile2Data => { Environment.Instance.Tile2Factory.SpawnTile(tile2Data); });
     }
+
 
     private void InitializePlayer()
     {
         PlayerModel playerModel = new PlayerModel();
-        player.Initialize(playerModel);
+        PlayerController.Instance.Initialize(playerModel);
     }
 }
