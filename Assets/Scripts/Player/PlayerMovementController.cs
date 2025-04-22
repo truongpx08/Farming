@@ -21,7 +21,7 @@ public class PlayerMovementController : MonoBehaviour
     private void HandleMovement()
     {
         if (!sharedComponents) return;
-        Vector3 moveDirection = sharedComponents.InputHandler.GetMoveDirection();
+        Vector3 moveDirection = sharedComponents.InputHandler.MoveDirection;
         movementView.Move(moveDirection * model.MoveSpeed);
     }
 }

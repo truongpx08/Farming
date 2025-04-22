@@ -13,4 +13,9 @@ public class Tile1 : MonoBehaviour
     {
         this.data.position = transform.position;
     }
+
+    public void SetData(Tile1Data tile1Data)
+    {
+        this.data = tile1Data;
+    }
 }

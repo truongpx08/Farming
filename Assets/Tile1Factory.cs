@@ -24,7 +24,7 @@ public class Tile1Factory : MonoBehaviour
         }
     }
 
-    public GameObject SpawnTile(Tile1Data data)
+    public Tile1 SpawnTile(Tile1Data data)
     {
         if (!prefabMap.TryGetValue(data.type, out var prefab))
         {
@@ -34,6 +34,6 @@ public class Tile1Factory : MonoBehaviour
 
         GameObject tile = Instantiate(prefab, data.position, Quaternion.identity);
         tile.transform.parent = Environment.Instance.Tilemap1.transform;
-        return tile;
+        return tile.GetComponent<Tile1>();
     }
 }

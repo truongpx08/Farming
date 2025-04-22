@@ -25,6 +25,7 @@ public class Tile2Data
     public Tile2Type type;
     public Vector3 position;
     public Vector3 rotation;
+    public bool isOwnedByPlayer;
 }
 
 [Serializable]
@@ -36,7 +37,9 @@ public enum Tile2Type
     Fence21,
     Fence3,
     Fence4,
-    MiniTree
+    MiniTree,
+    Door,
+    All,
 }
 
 [Serializable]

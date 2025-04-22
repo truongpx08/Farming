@@ -18,7 +18,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void UpdateAnimation()
     {
-        Vector3 moveDirection = sharedComponents.InputHandler.GetMoveDirection();
+        Vector3 moveDirection = sharedComponents.InputHandler.MoveDirection;
         bool isMoving = moveDirection.magnitude > 0.1f;
         animationView.SetMovementState(isMoving);
     }

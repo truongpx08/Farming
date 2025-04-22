@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Tilemap1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private List<Tile1> tiles;
+    public List<Tile1> Tiles => this.tiles;
 }

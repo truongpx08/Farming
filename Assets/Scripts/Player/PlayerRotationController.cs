@@ -21,7 +21,7 @@ public class PlayerRotationController : MonoBehaviour
     private void HandleRotation()
     {
         if (!sharedComponents) return;
-        Vector3 moveDirection = sharedComponents.InputHandler.GetMoveDirection();
+        Vector3 moveDirection = sharedComponents.InputHandler.MoveDirection;
 
         if (moveDirection != Vector3.zero)
         {

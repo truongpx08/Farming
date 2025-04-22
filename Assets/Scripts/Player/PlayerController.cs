@@ -6,6 +6,10 @@ public class PlayerController : TruongSingleton<PlayerController>
     [SerializeField] private PlayerRotationController rotationController;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private PlayerSharedComponents sharedComponents;
+    [SerializeField] private PlayerInputHandler inputHandler;
+    public PlayerInputHandler InputHandler => this.inputHandler;
+    [SerializeField] private PlayerCurrentItemController currentItemController;
+    public PlayerCurrentItemController CurrentItemController => this.currentItemController;
 
     public void Initialize(PlayerModel playerModel)
     {

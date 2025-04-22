@@ -25,7 +25,7 @@ public class Tile2Factory : MonoBehaviour
         }
     }
 
-    public GameObject SpawnTile(Tile2Data data)
+    public Tile2 SpawnTile(Tile2Data data)
     {
         if (!prefabMap.TryGetValue(data.type, out var prefab))
         {
@@ -33,8 +33,11 @@ public class Tile2Factory : MonoBehaviour
             return null;
         }
 
-        GameObject tile = Instantiate(prefab, data.position, Quaternion.identity);
-        tile.transform.parent = Environment.Instance.Tilemap1.transform;
-        return tile;
+        // Chuyển đổi rotation từ Vector3 sang Quaternion
+        Quaternion rotation = Quaternion.Euler(data.rotation);
+
+        GameObject tile = Instantiate(prefab, data.position, rotation);
+        tile.transform.parent = Environment.Instance.Tilemap2.transform;
+        return tile.GetComponent<Tile2>();
     }
 }

@@ -31,15 +31,16 @@ public class DataManager : TruongDataAbstract<DataManager>
     private void ImportSceneToData()
     {
         this.gameData.tilemap1.Clear();
-        Environment.Instance.Tilemap1Items.ForEach(tile => { this.gameData.tilemap1.Add(tile.Data); });
+        Environment.Instance.Tilemap1.Tiles.ForEach(tile => { this.gameData.tilemap1.Add(tile.Data); });
 
         this.gameData.tilemap2.Clear();
-        Environment.Instance.Tilemap2Items.ForEach(tile => { this.gameData.tilemap2.Add(tile.Data); });
+        Environment.Instance.Tilemap2.Tiles.ForEach(tile => { this.gameData.tilemap2.Add(tile.Data); });
     }
 
     [Button]
     public void CreateDefaultJson()
     {
+        ImportSceneToData();
         string json = JsonUtility.ToJson(this.gameData, true);
 
         string folderPath = Application.dataPath + "/Resources/Data";
