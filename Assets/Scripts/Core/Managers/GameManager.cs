@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GameManager : TruongSingleton<GameManager>
 {
-    public ItemData firstItem;
-
     protected override void Start()
     {
         // Khởi tạo game
@@ -12,24 +10,15 @@ public class GameManager : TruongSingleton<GameManager>
         {
             InitializeEnvironment(gameData);
             InitializePlayer();
-            InitializeItem();
             InitializeFocus();
+            ItemPanel.Instance.InitializeButtons();
+            // ItemPanel.Instance.ItemButtons[0].OnButtonClicked();
         });
     }
 
     private void InitializeFocus()
     {
         FocusController.Instance.DisableModel();
-    }
-
-    private void InitializeItem()
-    {
-        PlayerController.Instance.CurrentItemController.OnItemChanged += HandleItemControllerChanged;
-        PlayerController.Instance.CurrentItemController.SetCurrentItem(firstItem);
-    }
-
-    private void HandleItemControllerChanged(ItemData obj)
-    {
     }
 
     private void InitializeEnvironment(TruongGameData gameData)

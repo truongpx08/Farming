@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
-public class FollowBone : MonoBehaviour
+public class FollowItemBone : MonoBehaviour
 {
     // Tham chiếu đến xương của Player
-    public Transform playerBone;
+    private Transform playerBone;
 
     // Độ lệch vị trí (nếu cần)
     public Vector3 positionOffset;
@@ -11,7 +12,12 @@ public class FollowBone : MonoBehaviour
     // Độ lệch xoay (nếu cần)
     public Vector3 rotationOffset;
 
-    void Update()
+    private void Start()
+    {
+        playerBone = PlayerController.Instance.Bones.ItemR;
+    }
+
+    private void Update()
     {
         if (playerBone != null)
         {

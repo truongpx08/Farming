@@ -3205,20 +3205,6 @@
         {
             "type": 6,
             "position": {
-                "x": 3.5,
-                "y": 0.0,
-                "z": -2.5
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "isOwnedByPlayer": false
-        },
-        {
-            "type": 6,
-            "position": {
                 "x": 4.5,
                 "y": 0.0,
                 "z": 1.5
@@ -3527,20 +3513,6 @@
         {
             "type": 1,
             "position": {
-                "x": 2.5,
-                "y": 0.0,
-                "z": -2.5
-            },
-            "rotation": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0
-            },
-            "isOwnedByPlayer": false
-        },
-        {
-            "type": 1,
-            "position": {
                 "x": 0.5,
                 "y": 0.0,
                 "z": -7.5
@@ -3561,7 +3533,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3575,7 +3547,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3631,7 +3603,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3645,7 +3617,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3659,7 +3631,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3673,7 +3645,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3687,7 +3659,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3701,7 +3673,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3757,7 +3729,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3785,7 +3757,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 270.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3799,7 +3771,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 180.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3813,7 +3785,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3827,7 +3799,7 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
@@ -3841,10 +3813,24 @@
             },
             "rotation": {
                 "x": 0.0,
-                "y": 0.0,
+                "y": 90.0,
                 "z": 0.0
             },
             "isOwnedByPlayer": true
+        },
+        {
+            "type": 7,
+            "position": {
+                "x": 0.5,
+                "y": 0.0,
+                "z": -1.5
+            },
+            "rotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "isOwnedByPlayer": false
         }
     ]
 }

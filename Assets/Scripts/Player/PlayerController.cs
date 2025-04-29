@@ -10,6 +10,8 @@ public class PlayerController : TruongSingleton<PlayerController>
     public PlayerInputHandler InputHandler => this.inputHandler;
     [SerializeField] private PlayerCurrentItemController currentItemController;
     public PlayerCurrentItemController CurrentItemController => this.currentItemController;
+    [SerializeField] private PlayerBones bones;
+    public PlayerBones Bones => this.bones;
 
     public void Initialize(PlayerModel playerModel)
     {

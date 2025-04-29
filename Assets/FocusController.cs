@@ -12,7 +12,7 @@ public class FocusController : TruongSingleton<FocusController>
     protected override void FixedUpdate()
     {
         if (PlayerController.Instance.InputHandler.MoveDirection == Vector3.zero) return;
-        var currentItem = PlayerController.Instance.CurrentItemController.CurrentItem;
+        var currentItem = PlayerController.Instance.CurrentItemController.CurrentItemData;
         if (currentItem == null) return;
 
         switch (currentItem.type)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NearestTileFinder
 {
-    float maxDistance = 1.5f; // Khoảng cách tối đa để xét tile
+    private const float MaxDistance = 1.3f; // Khoảng cách tối đa để xét tile
 
     public Tile1 GetNearestTile1InFront()
     {
@@ -18,7 +18,7 @@ public class NearestTileFinder
             if (dot > 0)
             {
                 float dist = toTile.magnitude;
-                if (dist < nearestDist && dist <= maxDistance)
+                if (dist < nearestDist && dist <= MaxDistance)
                 {
                     nearestDist = dist;
                     nearestTile = tile;
@@ -43,7 +43,7 @@ public class NearestTileFinder
             if (dot > 0)
             {
                 float dist = toTile.magnitude;
-                if (dist < nearestDist && dist <= maxDistance)
+                if (dist < nearestDist && dist <= MaxDistance)
                 {
                     nearestDist = dist;
                     nearestTile = tile;

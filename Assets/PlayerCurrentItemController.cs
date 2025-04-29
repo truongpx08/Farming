@@ -4,28 +4,45 @@ using UnityEngine;
 public class PlayerCurrentItemController : MonoBehaviour
 {
     // Biến để lưu trữ item hiện tại
-    public ItemData CurrentItem { get; private set; }
-
-    // Sự kiện khi item được thay đổi
-    public event Action<ItemData> OnItemChanged;
-
+    public ItemData CurrentItemData { get; private set; }
+    public GameObject currentItemObj;
 
     // Phương thức để đặt item mới
-    public void SetCurrentItem(ItemData newItem)
+    public void SetCurrentItem(ItemData newItemData)
     {
-        if (CurrentItem != newItem)
+        if (CurrentItemData != newItemData)
         {
-            CurrentItem = newItem;
-            // Gọi sự kiện khi item thay đổi
-            OnItemChanged?.Invoke(CurrentItem);
+            CurrentItemData = newItemData;
+            // Tắt item đang cầm trên tay
+            if (currentItemObj != null)
+            {
+                ObjectPoolManager.Instance.ReturnObjectToPool(this.currentItemObj);
+                this.currentItemObj = null;
+            }
+
+            switch (CurrentItemData.type)
+            {
+                case ItemType.None:
+
+                    break;
+                case ItemType.Rotation:
+                    this.currentItemObj = ObjectPoolManager.Instance.GetObjectFromPool(CurrentItemData.prefab,
+                        this.transform
+                    );
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 
     // Phương thức để sử dụng item
     private void UseItem(Tile2 targetTile)
     {
-        switch (CurrentItem.type)
+        switch (CurrentItemData.type)
         {
+            case ItemType.None:
+                break;
             case ItemType.Rotation:
                 // Xoay mục tiêu một góc 90 độ
                 targetTile.transform.Rotate(0, 90, 0);
@@ -44,16 +61,10 @@ public class PlayerCurrentItemController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Tile2 targetTile = FocusController.Instance.TargetTile;
-            if (targetTile != null && CurrentItem != null)
+            if (targetTile != null && CurrentItemData != null)
             {
                 UseItem(targetTile);
             }
         }
-    }
-
-    // Phương thức để xóa item hiện tại
-    public void ClearCurrentItem()
-    {
-        SetCurrentItem(null);
     }
 }
