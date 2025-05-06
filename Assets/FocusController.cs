@@ -9,15 +9,15 @@ public class FocusController : TruongSingleton<FocusController>
     [SerializeField] private GameObject model;
     public Tile2 TargetTile { get; private set; }
 
-    protected override void FixedUpdate()
+    public void UpdateModel()
     {
-        if (PlayerController.Instance.InputHandler.MoveDirection == Vector3.zero) return;
-        var currentItem = PlayerController.Instance.CurrentItemController.CurrentItemData;
+        var currentItem = PlayerController.Instance.CurrentItemController.CurrentItemDefinition;
         if (currentItem == null) return;
 
         switch (currentItem.type)
         {
             case ItemType.None:
+                DisableModel();
                 break;
             case ItemType.Rotation:
                 NearestTileFinder nearestTileFinder = new NearestTileFinder();

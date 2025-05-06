@@ -4,15 +4,15 @@ using UnityEngine;
 public class PlayerCurrentItemController : MonoBehaviour
 {
     // Biến để lưu trữ item hiện tại
-    public ItemData CurrentItemData { get; private set; }
+    public ItemDefinition CurrentItemDefinition { get; private set; }
     public GameObject currentItemObj;
 
     // Phương thức để đặt item mới
-    public void SetCurrentItem(ItemData newItemData)
+    public void SetCurrentItem(ItemDefinition newItemDefinition)
     {
-        if (CurrentItemData != newItemData)
+        if (CurrentItemDefinition != newItemDefinition)
         {
-            CurrentItemData = newItemData;
+            CurrentItemDefinition = newItemDefinition;
             // Tắt item đang cầm trên tay
             if (currentItemObj != null)
             {
@@ -20,13 +20,13 @@ public class PlayerCurrentItemController : MonoBehaviour
                 this.currentItemObj = null;
             }
 
-            switch (CurrentItemData.type)
+            switch (CurrentItemDefinition.type)
             {
                 case ItemType.None:
 
                     break;
                 case ItemType.Rotation:
-                    this.currentItemObj = ObjectPoolManager.Instance.GetObjectFromPool(CurrentItemData.prefab,
+                    this.currentItemObj = ObjectPoolManager.Instance.GetObjectFromPool(CurrentItemDefinition.prefab,
                         this.transform
                     );
                     break;
@@ -39,7 +39,7 @@ public class PlayerCurrentItemController : MonoBehaviour
     // Phương thức để sử dụng item
     private void UseItem(Tile2 targetTile)
     {
-        switch (CurrentItemData.type)
+        switch (CurrentItemDefinition.type)
         {
             case ItemType.None:
                 break;
@@ -61,7 +61,7 @@ public class PlayerCurrentItemController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Tile2 targetTile = FocusController.Instance.TargetTile;
-            if (targetTile != null && CurrentItemData != null)
+            if (targetTile != null && CurrentItemDefinition != null)
             {
                 UseItem(targetTile);
             }

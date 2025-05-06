@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class ItemPanel : TruongSingleton<ItemPanel>
+public class ItemPanel : MonoBehaviour
 {
     [SerializeField] private List<ItemButton> itemButtons = new();
     public List<ItemButton> ItemButtons => this.itemButtons;
-    [SerializeField] private List<ItemData> availableItems = new();
+    [SerializeField] private List<ItemDefinition> availableItems = new();
 
     public void InitializeButtons()
     {
@@ -20,12 +20,7 @@ public class ItemPanel : TruongSingleton<ItemPanel>
             else
                 itemButtons[i].Setup(null); // Button không có item
         }
-    }
 
-    // Phương thức để cập nhật item trong panel
-    public void UpdateItems(List<ItemData> newItems)
-    {
-        availableItems = newItems;
-        InitializeButtons();
+        ItemButtons[0].OnButtonClicked();
     }
 }

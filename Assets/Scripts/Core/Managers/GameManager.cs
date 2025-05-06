@@ -6,23 +6,16 @@ public class GameManager : TruongSingleton<GameManager>
     protected override void Start()
     {
         // Khởi tạo game
-        DataManager.Instance.TryLoadLocalData((gameData) =>
-        {
-            InitializeEnvironment(gameData);
-            InitializePlayer();
-            InitializeFocus();
-            ItemPanel.Instance.InitializeButtons();
-            // ItemPanel.Instance.ItemButtons[0].OnButtonClicked();
-        });
+        DataManager.Instance.TryLoadLocalData();
+        InitializeEnvironment();
+        InitializePlayer();
+        GamePlayUI.Instance.InventoryPanel.Initializer.Initialize();
+        GamePlayUI.Instance.ItemPanel.InitializeButtons();
     }
 
-    private void InitializeFocus()
+    private void InitializeEnvironment()
     {
-        FocusController.Instance.DisableModel();
-    }
-
-    private void InitializeEnvironment(TruongGameData gameData)
-    {
+        GameData gameData = DataManager.Instance.GameData;
         gameData.tilemap1.ForEach(tileData =>
         {
             var tile = Environment.Instance.Tile1Factory.SpawnTile(tileData);

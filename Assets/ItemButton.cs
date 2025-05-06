@@ -3,33 +3,27 @@ using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
 {
-    private ItemData itemData;
+    private ItemDefinition _itemDefinition;
     [SerializeField] private Image itemIcon;
 
-    private PlayerCurrentItemController itemController;
-
-    private void Start()
+    public void Setup(ItemDefinition definition)
     {
-        itemController = PlayerController.Instance.CurrentItemController;
-    }
-
-    public void Setup(ItemData data)
-    {
-        itemData = data;
-        if (itemData != null && itemIcon != null)
+        _itemDefinition = definition;
+        if (_itemDefinition != null && _itemDefinition.icon != null && itemIcon != null)
         {
-            itemIcon.sprite = itemData.icon;
-            itemIcon.enabled = true;
+            itemIcon.sprite = _itemDefinition.icon;
+            itemIcon.gameObject.SetActive(true);
         }
         else
         {
-            itemIcon.enabled = false;
+            itemIcon.gameObject.SetActive(false);
         }
     }
 
     public void OnButtonClicked()
     {
         Debug.Log($"Selected item: {transform.GetSiblingIndex()}");
-        itemController.SetCurrentItem(itemData);
+        PlayerController.Instance.CurrentItemController.SetCurrentItem(_itemDefinition);
+        FocusController.Instance.UpdateModel();
     }
 }
