@@ -9,7 +9,6 @@ public class GameManager : TruongSingleton<GameManager>
         DataManager.Instance.TryLoadLocalData();
         InitializeEnvironment();
         InitializePlayer();
-        GamePlayUI.Instance.InventoryPanel.Initializer.Initialize();
         GamePlayUI.Instance.ItemPanel.InitializeButtons();
     }
 

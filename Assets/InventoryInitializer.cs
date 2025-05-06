@@ -1,5 +1,7 @@
 public class InventoryInitializer : InventoryPanelAccess
 {
+    public bool HasInitialized { get; private set; }
+
     public void Initialize()
     {
         int count = 0;
@@ -9,5 +11,7 @@ public class InventoryInitializer : InventoryPanelAccess
             slot.Initializer.Initialize(itemData);
             count++;
         });
+
+        this.HasInitialized = true;
     }
 }
