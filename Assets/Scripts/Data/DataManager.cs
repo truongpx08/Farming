@@ -9,6 +9,22 @@ public class DataManager : DataAbstract<DataManager>
 {
     private const string DefaultDataFileName = "DefaultData.json";
 
+    protected override void Start()
+    {
+        StartCoroutine(AutoSaveRoutine());
+    }
+
+    private IEnumerator AutoSaveRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(30f);
+            ImportSceneToData();
+            SaveData();
+            Debug.Log("Auto-saved game data!");
+        }
+    }
+
     protected override void OnDataLoaded()
     {
     }
@@ -40,7 +56,6 @@ public class DataManager : DataAbstract<DataManager>
     [Button]
     public void CreateDefaultJson()
     {
-        ImportSceneToData();
         string json = JsonUtility.ToJson(this.gameData, true);
 
         string folderPath = Application.dataPath + "/Resources/Data";
@@ -51,5 +66,11 @@ public class DataManager : DataAbstract<DataManager>
 
         AssetDatabase.Refresh(); // Cập nhật Project view
         Debug.Log($"Saved {DefaultDataFileName} to Resources!");
+    }
+
+    private void OnApplicationQuit()
+    {
+        ImportSceneToData();
+        SaveData();
     }
 }

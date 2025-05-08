@@ -71,9 +71,4 @@ public abstract class DataAbstract<T> : TruongSingleton<T>
     {
         return File.ReadAllText(dataPath);
     }
-
-    private void OnApplicationQuit()
-    {
-        SaveData();
-    }
 }

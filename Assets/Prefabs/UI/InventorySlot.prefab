@@ -188,7 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initializer: {fileID: 2293891127232490234}
-  item: {fileID: 0}
 --- !u!114 &6186713632236079103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642ebb6fa7cc0f14884538f9c78f57e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slot: {fileID: 2762849182044934869}
 --- !u!1 &8249236474965536341
 GameObject:
   m_ObjectHideFlags: 0

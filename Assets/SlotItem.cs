@@ -11,5 +11,12 @@ public class SlotItem : MonoBehaviour
     [SerializeField] private ItemInitializer initializer;
     public ItemInitializer Initializer => this.initializer;
     [SerializeField] private SlotItemData itemData;
+    private InventorySlot slot;
+    public InventorySlot Slot => this.slot;
     public SlotItemData ItemData => this.itemData;
+
+    public void SetSlot(InventorySlot inventorySlot)
+    {
+        this.slot = inventorySlot;
+    }
 }
